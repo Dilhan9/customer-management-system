@@ -17,11 +17,11 @@ API-first: RESTful endpoints for all operations.
 
 Getting Started
 Prerequisites
-Java 17 or newer
+Java 21
 
 Maven 3.6+
 
-MySQL, PostgreSQL, or H2 database
+Maria DB
 
 Installation
 Clone the repository
@@ -32,7 +32,6 @@ cd customer-management-system/backend
 Configure Database
 
 Update src/main/resources/application.properties with your DB credentials.
-For development, H2 is supported out of the box.
 
 Run Database Scripts
 
@@ -47,34 +46,22 @@ bash
 mvn clean install
 mvn spring-boot:run
 The backend will start at http://localhost:8080.
-
-Project Structure
-text
-src/
-├── main/
-│   ├── java/com/yourorg/customermanagement/
-│   │   ├── controller/
-│   │   ├── service/
-│   │   ├── repository/
-│   │   ├── entity/
-│   │   └── CustomerManagementApplication.java
-│   └── resources/
-│       ├── application.properties
-│       ├── schema.sql
-│       └── master-data.sql
-└── test/
-    └── java/com/yourorg/customermanagement/
     
 API Endpoints
 POST /api/customers - Create customer
+http://localhost:8080/api/customers
 
 GET /api/customers/{id} - Get customer by ID
+http://localhost:8080/api/customers/1
 
 PUT /api/customers/{id} - Update customer
 
+
 GET /api/customers - Paginated customer list
+http://localhost:8080/api/customers?page=0&size=10
 
 POST /api/customers/upload - Bulk upload via Excel (multipart/form-data)
+http://localhost:8080/api/customers/upload
 
 More endpoints for addresses, family members, etc.
 
