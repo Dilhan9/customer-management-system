@@ -13,7 +13,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     Optional<Customer> findByNic(String nic);
     boolean existsByNic(String nic);
 
-    // You can add more custom queries if needed
 }
 
 

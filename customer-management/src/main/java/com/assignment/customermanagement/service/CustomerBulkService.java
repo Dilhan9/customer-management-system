@@ -33,7 +33,6 @@ public class CustomerBulkService {
 
             int count = 0;
 
-            // Skip header row if present
             if (rowIterator.hasNext()) {
                 rowIterator.next();
             }
@@ -64,12 +63,9 @@ public class CustomerBulkService {
     private Customer mapRowToCustomer(Row row) {
         Customer customer = new Customer();
 
-        // Assuming columns: Name(0), DOB(1), NIC(2), MobileNumbers(3), AddressLine1(4), AddressLine2(5), CityCode(6), CountryCode(7)
-        // Adjust column indexes as per your Excel file structure
 
         customer.setName(getCellStringValue(row.getCell(0)));
 
-        // Parse DOB from Excel date cell
         Cell dobCell = row.getCell(1);
         if (dobCell != null && dobCell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(dobCell)) {
             customer.setDob(dobCell.getLocalDateTimeCellValue().toLocalDate());
@@ -77,7 +73,6 @@ public class CustomerBulkService {
 
         customer.setNic(getCellStringValue(row.getCell(2)));
 
-        // Mobile numbers - assuming comma separated in one cell
         String mobiles = getCellStringValue(row.getCell(3));
         if (mobiles != null && !mobiles.isEmpty()) {
             String[] mobileArray = mobiles.split(",");
@@ -86,8 +81,7 @@ public class CustomerBulkService {
             }
         }
 
-        // Address
-        // Create Address embeddable and add to customer addresses list
+
         com.assignment.customermanagement.entity.Address address = new com.assignment.customermanagement.entity.Address();
         address.setAddressLine1(getCellStringValue(row.getCell(4)));
         address.setAddressLine2(getCellStringValue(row.getCell(5)));
@@ -96,7 +90,6 @@ public class CustomerBulkService {
 
         customer.getAddresses().add(address);
 
-        // Family members are not handled here for simplicity; can be added similarly
 
         return customer;
     }

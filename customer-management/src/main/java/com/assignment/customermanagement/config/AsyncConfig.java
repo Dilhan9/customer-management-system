@@ -15,19 +15,14 @@ public class AsyncConfig {
     public Executor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 
-        // Core number of threads
         executor.setCorePoolSize(5);
 
-        // Maximum allowed threads
         executor.setMaxPoolSize(10);
 
-        // Queue capacity for tasks before new threads are created
         executor.setQueueCapacity(500);
 
-        // Thread name prefix for easier debugging
         executor.setThreadNamePrefix("AsyncExecutor-");
 
-        // Initialize the executor
         executor.initialize();
 
         return executor;

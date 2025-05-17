@@ -34,7 +34,7 @@ class CustomerServiceImplTest {
         customer.setName("John Doe");
         customer.setNic("123456789V");
         customer.setDob(LocalDate.of(1990, 1, 1));
-        // Set other fields as needed
+
     }
 
     @Test
@@ -86,6 +86,6 @@ class CustomerServiceImplTest {
 
         assertThat(result.getContent()).hasSize(1);
     }
-    
+
 }
 
