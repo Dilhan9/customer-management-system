@@ -1,13 +1,16 @@
 package com.assignment.customermanagement.service;
 
 import com.assignment.customermanagement.entity.Customer;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface CustomerService {
-    Customer createCustomer(CustomerDto dto);
-    Customer updateCustomer(Long id, CustomerDto dto);
-    Customer getCustomer(Long id);
-    List<Customer> getAllCustomers();
-}
 
+    Customer createCustomer(Customer customer);
+
+    Customer updateCustomer(Long id, Customer customer);
+
+    Customer getCustomerById(Long id);
+
+    Page<Customer> getAllCustomers(Pageable pageable);
+}
