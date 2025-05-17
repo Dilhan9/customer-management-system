@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @EntityScan("com.assignment.customermanagement.entity")
-//@EnableAsync
+@EnableAsync
 @SpringBootApplication
 public class CustomerManagementApplication {
 
